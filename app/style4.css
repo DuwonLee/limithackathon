@@ -1,0 +1,453 @@
+.frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.frame .CLOVA-AI {
+  position: relative;
+  width: 402px;
+  height: 879px;
+  background-color: #ffffff;
+}
+
+.frame .rectangle {
+  position: absolute;
+  top: 226px;
+  left: 22px;
+  width: 351px;
+  height: 167px;
+  background-color: #f1f1f1;
+}
+
+.frame .text-wrapper {
+  position: absolute;
+  top: 246px;
+  left: 43px;
+  font-family: "NanumSquare Neo OTF-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #272727;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.frame .div {
+  position: absolute;
+  top: 64px;
+  left: 22px;
+  font-family: "NanumSquare Neo OTF-ExtraBold", Helvetica;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: normal;
+  color: #272727;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.frame .element-oo {
+  position: absolute;
+  top: 291px;
+  left: 43px;
+  width: 312px;
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+  font-weight: 400;
+  color: #272727;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 22.5px;
+}
+
+.frame .span {
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+  font-weight: 400;
+  color: #272727;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 22.5px;
+}
+
+.frame .text-wrapper-2 {
+  font-family: "NanumSquare Neo OTF-Bold", Helvetica;
+  font-weight: 700;
+}
+
+.frame .div-wrapper {
+  display: flex;
+  width: 351px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px 20px;
+  position: absolute;
+  top: 364px;
+  left: 22px;
+  background-color: #9effde;
+}
+
+.frame .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: #272727;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.frame .ellipse {
+  position: absolute;
+  top: 216px;
+  left: 359px;
+  width: 26px;
+  height: 26px;
+  background-color: #ffffff;
+  border-radius: 13px;
+  box-shadow: 0px 0px 10px #00000040;
+}
+
+.frame .text-wrapper-4 {
+  position: absolute;
+  top: 220px;
+  left: 367px;
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+  font-weight: 400;
+  color: #272727;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.frame .mask-group {
+  position: absolute;
+  top: 512px;
+  left: 102px;
+  width: 181px;
+  height: 181px;
+}
+
+.frame .image {
+  top: 482px;
+  left: 207px;
+  width: 70px;
+  height: 70px;
+  aspect-ratio: 0.99;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .img {
+  position: absolute;
+  top: 480px;
+  left: 206px;
+  width: 74px;
+  height: 74px;
+}
+
+.frame .image-2 {
+  top: 650px;
+  left: 206px;
+  width: 83px;
+  height: 82px;
+  aspect-ratio: 1.01;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-3 {
+  top: 480px;
+  left: 107px;
+  width: 75px;
+  height: 74px;
+  aspect-ratio: 1.01;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .mask-group-2 {
+  position: absolute;
+  top: 563px;
+  left: 52px;
+  width: 78px;
+  height: 77px;
+}
+
+.frame .image-4 {
+  top: 405px;
+  left: 144px;
+  width: 98px;
+  height: 98px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-5 {
+  top: 652px;
+  left: 49px;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-6 {
+  top: 502px;
+  left: 49px;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-7 {
+  top: 722px;
+  left: 173px;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-8 {
+  top: 654px;
+  left: 299px;
+  width: 47px;
+  height: 47px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-9 {
+  top: 502px;
+  left: 292px;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .mask-group-3 {
+  position: absolute;
+  top: 656px;
+  left: 107px;
+  width: 75px;
+  height: 75px;
+}
+
+.frame .image-10 {
+  top: 430px;
+  left: 168px;
+  width: 49px;
+  height: 48px;
+  aspect-ratio: 1.01;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .image-11 {
+  top: 558px;
+  left: 264px;
+  width: 87px;
+  height: 87px;
+  aspect-ratio: 1;
+  position: absolute;
+  object-fit: cover;
+}
+
+.frame .rectangle-2 {
+  position: absolute;
+  top: 137px;
+  left: 27px;
+  width: 351px;
+  height: 58px;
+  background-color: #d9d9d9;
+  border-radius: 43.5px;
+}
+
+.frame .rectangle-3 {
+  position: absolute;
+  top: 138px;
+  left: 192px;
+  width: 185px;
+  height: 58px;
+  background-color: #ededed;
+  border-radius: 43.5px;
+}
+
+.frame .text-wrapper-5 {
+  position: absolute;
+  top: 155px;
+  left: 91px;
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: #272727;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.frame .p {
+  position: absolute;
+  top: 155px;
+  left: 238px;
+  font-family: "NanumSquare Neo OTF-Bold", Helvetica;
+  font-weight: 400;
+  color: #272727;
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 22.5px;
+  white-space: nowrap;
+}
+
+.frame .text-wrapper-6 {
+  font-weight: 700;
+}
+
+.frame .text-wrapper-7 {
+  font-family: "NanumSquare Neo OTF-Regular", Helvetica;
+}
+
+.frame .vector {
+  position: absolute;
+  width: 64.68%;
+  height: 98.52%;
+  top: 0;
+  left: 35.32%;
+}
+
+.frame .liquid-glass-regular {
+  position: absolute;
+  top: 780px;
+  left: 81px;
+  width: 238px;
+  height: 60px;
+  display: flex;
+}
+
+.frame .fill-shadow {
+  margin-right: -0.5px;
+  flex: 1;
+  width: 238px;
+  border-radius: 370px;
+  box-shadow: 0px 10px 50px #0000001f;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(247, 247, 247, 1) 0%,
+      rgba(247, 247, 247, 1) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(221, 221, 221, 1) 0%,
+      rgba(221, 221, 221, 1) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.65) 100%
+    );
+}
+
+.frame .utensils {
+  position: absolute;
+  top: 795px;
+  left: 185px;
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1;
+}
+
+.frame .vector-2 {
+  position: absolute;
+  width: 86.46%;
+  height: 90.62%;
+  top: 9.38%;
+  left: 13.54%;
+}
+
+.frame .vector-3 {
+  position: absolute;
+  width: 73.96%;
+  height: 90.62%;
+  top: 9.38%;
+  left: 26.04%;
+}
+
+.frame .vector-4 {
+  position: absolute;
+  width: 36.46%;
+  height: 90.62%;
+  top: 9.38%;
+  left: 63.54%;
+}
+
+.frame .user {
+  position: absolute;
+  top: 795px;
+  left: 260px;
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1;
+}
+
+.frame .vector-5 {
+  position: absolute;
+  width: 69.79%;
+  height: 90.62%;
+  top: 9.38%;
+  left: 30.21%;
+}
+
+.frame .vector-6 {
+  position: absolute;
+  width: 86.46%;
+  height: 44.79%;
+  top: 55.21%;
+  left: 13.54%;
+}
+
+.frame .group {
+  position: absolute;
+  width: 7.46%;
+  top: 794px;
+  left: 27.30%;
+  height: 30px;
+  display: flex;
+}
+
+.frame .apple {
+  margin-top: 0;
+  height: 30px;
+  flex: 1;
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.frame .vector-7 {
+  position: absolute;
+  width: 90.62%;
+  height: 82.29%;
+  top: 17.71%;
+  left: 9.38%;
+}
+
+.frame .vector-8 {
+  position: absolute;
+  width: 53.12%;
+  height: 94.79%;
+  top: 5.21%;
+  left: 46.88%;
+}
