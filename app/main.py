@@ -179,7 +179,8 @@ def recipe_row(r, fridge):
     have = [i for i in ings if has(fridge, i)]
     pct = round(len(have) / len(ings) * 100) if ings else 0
     return {"id": r["id"], "name": r["name"], "minutes": r["minutes"], "ingredients": ings,
-            "have": have, "percent": pct, "steps": json.loads(r["steps"] or "[]")}
+            "have": have, "percent": pct, "steps": json.loads(r["steps"] or "[]"),
+            "mine": r["source"] != "seed"}  # 기본 레시피(seed)가 아니면 내가 저장한 레시피 → 삭제 가능
 
 
 def parse_json(text: str):
@@ -630,6 +631,22 @@ def get_recipe(rid: int):
     return recipe_row(r, fridge_names())
 
 
+@app.delete("/api/recipes/{rid}")
+def delete_recipe(rid: int):
+    con = db()
+    r = con.execute("SELECT source FROM recipes WHERE id=?", (rid,)).fetchone()
+    if not r:
+        con.close()
+        raise HTTPException(404, "없는 레시피")
+    if r["source"] == "seed":
+        con.close()
+        raise HTTPException(403, "기본 레시피는 삭제할 수 없어요.")
+    con.execute("DELETE FROM recipes WHERE id=?", (rid,))
+    con.commit()
+    con.close()
+    return {"ok": True}
+
+
 @app.post("/api/recipes")
 def add_recipe(r: RecipeIn):
     con = db()
@@ -681,6 +698,9 @@ async def recommend():
     con = db()
     rows = con.execute("SELECT * FROM recipes WHERE source='seed'").fetchall()
     con.close()
+    if not rows:
+        return {"message": "추천할 레시피가 없어요. 잠시 후 다시 시도해 주세요.", "recipe": None, "used": [],
+                "source": "fallback", "error": error}
     best = max((recipe_row(r, names) for r in rows), key=lambda x: x["percent"])
     used = best["have"][:3] or names[:2]
     msg = f"냉장고에 {', '.join(used)}이(가) 있어요. 이 재료로 만들 수 있는 {best['name']} 어떠신가요?"
@@ -1535,7 +1555,7 @@ async function showRecipes(){
  if(state.rtab==='ai')return showRecommend();
  const rs=await api('/api/recipes');
  screen(rtabs()+'<div class="list">'+rs.map(r=>`<div class="card" onclick="showRecipe(${r.id})">${plate(r.name,62)}
- <div class="grow"><div class="title">${esc(r.name)}</div><div class="tags"><span class="time">${I.clock}${r.minutes}분</span><span class="tag pct">재료 ${r.percent}% 보유</span></div></div>
+ <div class="grow"><div class="title">${esc(r.name)}</div><div class="tags"><span class="time">${I.clock}${r.minutes}분</span><span class="tag pct">재료 ${r.percent}% 보유</span>${r.mine?'<span class="tag" style="color:var(--blue);border-color:#d6e4f8">내가 저장</span>':''}</div></div>
  <span class="chev">${I.chev}</span></div>`).join('')+'</div>')}
 
 async function showRecipe(id){const r=await api('/api/recipes/'+id);
@@ -1543,7 +1563,10 @@ async function showRecipe(id){const r=await api('/api/recipes/'+id);
  <div class="rhero">${plate(r.name,196)}<h2>${esc(r.name)}</h2>
  <div class="tags" style="justify-content:center"><span class="tag pct">재료 ${r.percent}% 보유</span><span class="tag time" style="color:#333">${I.clock}${r.minutes}분</span></div></div>
  <h2>재료</h2><div class="chips">${r.ingredients.map(i=>`<div class="chip ${r.have.includes(i)?'':'miss'}"><div class="e">${emo(i,'🥣')}</div>${esc(i)}</div>`).join('')}</div>
- <h2>조리 방법</h2>${r.steps.map((s,k)=>`<div class="step"><b>${k+1}</b><div>${esc(s)}</div></div>`).join('')}`,false,true)}
+ <h2>조리 방법</h2>${r.steps.map((s,k)=>`<div class="step"><b>${k+1}</b><div>${esc(s)}</div></div>`).join('')}
+ ${r.mine?`<button class="btn del" style="margin-top:18px" onclick="delRecipe(${r.id},this.dataset.n)" data-n="${esc(r.name)}">레시피 삭제</button>`:''}`,false,true)}
+async function delRecipe(id,name){if(!confirm(`'${name}' 레시피를 삭제할까요?`))return;
+ try{await api('/api/recipes/'+id,{method:'DELETE'});state.rtab='mine';await showRecipes();toast('레시피를 삭제했어요')}catch(e){toast(e.message)}}
 
 function recMsg(r){const u=(r.used||[]).filter(Boolean),name=r.recipe?.name;if(!u.length||!name)return esc(r.message);
  const b=x=>`<b>${esc(x)}</b>`;let list;
