@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 880" width="1280" height="880" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#5b6b7b"/>
+    </marker>
+    <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#2f86a6"/>
+    </marker>
+    <style>
+      .t{font-size:17px;font-weight:700;fill:#1c1c1e}
+      .s{font-size:12.5px;fill:#7a7a80}
+      .it{font-size:14px;font-weight:700;fill:#1c1c1e}
+      .id{font-size:12px;fill:#6b6b70}
+      .rk{font-size:13px;font-weight:700;fill:#1c1c1e}
+      .rp{font-size:12px;fill:#3f5873;font-family:Menlo, Consolas, monospace}
+      .sm{font-size:11.5px;fill:#555}
+      .mono{font-family:Menlo, Consolas, monospace}
+      .lbl{font-size:11.5px;fill:#5b6b7b}
+      .bn{font-size:11px;font-weight:700;fill:#0d4652}
+    </style>
+  </defs>
+
+  <rect width="1280" height="880" fill="#ffffff"/>
+
+  <!-- 제목 -->
+  <text x="30" y="50" font-size="26" font-weight="800" fill="#1c1c1e">릿톤 시스템 아키텍처</text>
+  <text x="30" y="76" class="s">냉장고 재료 관리 · HyperCLOVA X 레시피 추천 · 소비기한 지난 재료 처리 안내 · 커뮤니티</text>
+
+  <!-- ===== 1. 클라이언트 ===== -->
+  <rect x="30" y="110" width="290" height="620" rx="18" fill="#f4fbfd" stroke="#bfe9f2" stroke-width="1.5"/>
+  <text x="50" y="142" class="t">클라이언트</text>
+  <text x="50" y="162" class="s">브라우저 · 모바일 웹 (단일 HTML/JS)</text>
+  <g>
+    <rect x="46" y="180" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="206" class="it">재료 관리</text><text x="62" y="226" class="id">목록 · 상세 · 소비기한 캘린더</text>
+    <rect x="46" y="254" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="280" class="it">영수증 스캔</text><text x="62" y="300" class="id">카메라·앨범 → 축소·JPEG 변환 후 업로드</text>
+    <rect x="46" y="328" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="354" class="it">레시피</text><text x="62" y="374" class="id">내 레시피 · HyperCLOVA X 추천</text>
+    <rect x="46" y="402" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="428" class="it">처리 안내</text><text x="62" y="448" class="id">소비기한 지난 재료 분리배출</text>
+    <rect x="46" y="476" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="502" class="it">커뮤니티</text><text x="62" y="522" class="id">글 · 댓글 · 공감 · 검색</text>
+    <rect x="46" y="550" width="258" height="64" rx="12" fill="#fff" stroke="#e3eef2"/>
+    <text x="62" y="576" class="it">내 정보</text><text x="62" y="596" class="id">통계 · HCX 연결 테스트</text>
+  </g>
+  <rect x="46" y="640" width="258" height="70" rx="12" fill="none" stroke="#9fd9e6" stroke-dasharray="5 4"/>
+  <text x="62" y="666" class="it" style="font-size:13px">localStorage</text>
+  <text x="62" y="688" class="id">커뮤니티 사용자 ID (로그인 대체)</text>
+
+  <!-- 클라이언트 ↔ 서버 -->
+  <line x1="322" y1="340" x2="378" y2="340" stroke="#5b6b7b" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text x="350" y="318" class="lbl" text-anchor="middle">fetch</text>
+  <text x="350" y="362" class="lbl" text-anchor="middle">JSON</text>
+  <text x="350" y="377" class="lbl" text-anchor="middle">이미지</text>
+
+  <!-- ===== 2. 서버 ===== -->
+  <rect x="380" y="110" width="500" height="470" rx="18" fill="#f7f9fc" stroke="#d3deee" stroke-width="1.5"/>
+  <text x="400" y="142" class="t">FastAPI 서버</text>
+  <text x="400" y="162" class="s">app/main.py · uvicorn :8000 · 화면(HTML)도 함께 제공</text>
+
+  <text x="398" y="190" class="s" style="font-weight:700">API 라우트</text>
+  <g>
+    <rect x="396" y="200" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="222" class="rk">재료</text><text x="492" y="222" class="rp">/api/ingredients · /{id}/dispose</text>
+
+    <rect x="396" y="240" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="262" class="rk">영수증</text><text x="492" y="262" class="rp">/api/receipt</text>
+    <circle cx="824" cy="257" r="10" fill="#7fd8ea"/><text x="824" y="261" class="bn" text-anchor="middle">1</text>
+    <circle cx="848" cy="257" r="10" fill="#7fd8ea"/><text x="848" y="261" class="bn" text-anchor="middle">2</text>
+
+    <rect x="396" y="280" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="302" class="rk">레시피</text><text x="492" y="302" class="rp">/api/recipes · /api/recommend</text>
+    <circle cx="848" cy="297" r="10" fill="#7fd8ea"/><text x="848" y="301" class="bn" text-anchor="middle">3</text>
+
+    <rect x="396" y="320" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="342" class="rk">처리 안내</text><text x="492" y="342" class="rp">/api/disposal · /api/stats</text>
+    <circle cx="848" cy="337" r="10" fill="#7fd8ea"/><text x="848" y="341" class="bn" text-anchor="middle">4</text>
+
+    <rect x="396" y="360" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="382" class="rk">커뮤니티</text><text x="492" y="382" class="rp">/api/community/*</text>
+    <circle cx="848" cy="377" r="10" fill="#7fd8ea"/><text x="848" y="381" class="bn" text-anchor="middle">5</text>
+
+    <rect x="396" y="400" width="468" height="34" rx="9" fill="#fff" stroke="#e4e9f1"/>
+    <text x="412" y="422" class="rk">상태</text><text x="492" y="422" class="rp">/api/status?ping=true</text>
+  </g>
+
+  <rect x="396" y="452" width="228" height="112" rx="12" fill="#fff6f0" stroke="#f3d9c6"/>
+  <text x="410" y="476" class="rk">실패 시 폴백</text>
+  <text x="410" y="498" class="sm">기본 레시피 6종으로 추천</text>
+  <text x="410" y="518" class="sm">분리배출 기본 규칙(환경부 기준)</text>
+  <text x="410" y="538" class="sm">상품명 단순 정리 · 데모 데이터</text>
+  <text x="410" y="556" class="sm">전화번호 필터(글쓰기)</text>
+
+  <rect x="636" y="452" width="228" height="112" rx="12" fill="#eaf8fb" stroke="#bfe9f2"/>
+  <text x="650" y="476" class="rk">HyperCLOVA X 호출부</text>
+  <text x="650" y="498" class="sm"><tspan class="mono">hcx_chat</tspan> · v3 대화 API</text>
+  <text x="650" y="518" class="sm"><tspan class="mono">hcx_vision</tspan> · 이미지 요청</text>
+  <text x="650" y="538" class="sm"><tspan class="mono">parse_json</tspan> · JSON 추출</text>
+  <text x="650" y="556" class="sm">오류 원인 표시(401·404·429)</text>
+
+  <!-- 서버 ↔ DB -->
+  <line x1="630" y1="582" x2="630" y2="608" stroke="#5b6b7b" stroke-width="2" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text x="642" y="600" class="lbl">sqlite3</text>
+
+  <!-- ===== 3. DB ===== -->
+  <rect x="380" y="610" width="500" height="120" rx="18" fill="#fffaf1" stroke="#efdcb8" stroke-width="1.5"/>
+  <text x="400" y="640" class="t" style="font-size:16px">SQLite</text>
+  <text x="462" y="640" class="s mono">app/littone.db</text>
+  <g font-size="12" class="mono">
+    <rect x="398" y="654" width="96" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="446" y="671" text-anchor="middle" class="sm mono">ingredients</text>
+    <rect x="502" y="654" width="76" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="540" y="671" text-anchor="middle" class="sm mono">recipes</text>
+    <rect x="586" y="654" width="80" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="626" y="671" text-anchor="middle" class="sm mono">disposed</text>
+    <rect x="674" y="654" width="188" height="26" rx="13" fill="#eaf8fb" stroke="#bfe9f2"/><text x="768" y="671" text-anchor="middle" class="sm mono">disposal_guides (HCX 캐시)</text>
+    <rect x="398" y="688" width="66" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="431" y="705" text-anchor="middle" class="sm mono">users</text>
+    <rect x="472" y="688" width="66" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="505" y="705" text-anchor="middle" class="sm mono">posts</text>
+    <rect x="546" y="688" width="66" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="579" y="705" text-anchor="middle" class="sm mono">likes</text>
+    <rect x="620" y="688" width="88" height="26" rx="13" fill="#fff" stroke="#efdcb8"/><text x="664" y="705" text-anchor="middle" class="sm mono">comments</text>
+    <text x="722" y="705" class="sm" fill="#9a8a6a">← 커뮤니티</text>
+  </g>
+
+  <!-- ===== 4. 외부: CLOVA Studio ===== -->
+  <rect x="950" y="110" width="300" height="250" rx="18" fill="#eef5ff" stroke="#b8d2f3" stroke-width="1.5"/>
+  <text x="970" y="142" class="t">NAVER Cloud</text>
+  <text x="970" y="162" class="s">CLOVA Studio · HyperCLOVA X</text>
+  <rect x="966" y="176" width="268" height="62" rx="12" fill="#fff" stroke="#cfe0f6"/>
+  <text x="982" y="204" font-size="20" font-weight="800" fill="#2f6fb5">HCX-005</text>
+  <text x="982" y="226" class="id">텍스트 + 이미지 입력 (비전)</text>
+  <text x="970" y="262" class="sm mono">POST /v3/chat-completions/HCX-005</text>
+  <text x="970" y="282" class="sm mono">POST /v1/openai/chat/completions</text>
+  <text x="970" y="306" class="id">인증: Authorization: Bearer nv-…</text>
+  <text x="970" y="326" class="id">요청 ID: X-NCP-CLOVASTUDIO-REQUEST-ID</text>
+  <text x="970" y="346" class="id">응답 status.code 20000 = 성공</text>
+
+  <!-- 서버 → CLOVA Studio -->
+  <path d="M864 482 H906 V300 H948" fill="none" stroke="#2f86a6" stroke-width="2.2" marker-end="url(#ahc)"/>
+  <text x="927" y="291" class="lbl" text-anchor="middle" style="fill:#2f86a6;font-weight:700">HTTPS</text>
+
+  <!-- 외부: CLOVA OCR (선택) -->
+  <rect x="950" y="490" width="300" height="86" rx="14" fill="#fff" stroke="#c9c9cc" stroke-dasharray="6 4"/>
+  <text x="970" y="519" class="rk">CLOVA OCR <tspan class="s" style="font-weight:400">(선택)</tspan></text>
+  <text x="970" y="541" class="id">키가 있으면 영수증 글자 읽기를 OCR로,</text>
+  <text x="970" y="559" class="id">정리는 HyperCLOVA X로</text>
+  <line x1="880" y1="545" x2="948" y2="545" stroke="#9a9aa0" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+
+  <!-- 설정: .env -->
+  <rect x="950" y="600" width="300" height="130" rx="14" fill="#f5f5f6" stroke="#dedee2"/>
+  <text x="970" y="628" class="rk mono">app/.env</text>
+  <text x="1046" y="628" class="s">서버 시작 시 읽음 · Git 제외</text>
+  <text x="970" y="652" class="sm mono">CLOVASTUDIO_API_KEY</text>
+  <text x="970" y="672" class="sm mono">CLOVASTUDIO_MODEL <tspan class="s">(기본 HCX-005)</tspan></text>
+  <text x="970" y="692" class="sm mono">CLOVASTUDIO_VISION_MODEL</text>
+  <text x="970" y="712" class="sm mono">CLOVA_OCR_* <tspan class="s">(선택)</tspan></text>
+
+  <!-- ===== 하단: HCX 사용 지점 ===== -->
+  <rect x="30" y="756" width="1220" height="96" rx="16" fill="#f4fbfd" stroke="#bfe9f2"/>
+  <text x="50" y="784" class="rk" style="font-size:14px">HyperCLOVA X가 쓰이는 곳</text>
+  <g>
+    <circle cx="60" cy="818" r="11" fill="#7fd8ea"/><text x="60" y="822" class="bn" text-anchor="middle">1</text>
+    <text x="78" y="815" class="it" style="font-size:13px">영수증 품목 읽기</text><text x="78" y="834" class="id">HCX-005 비전 · 사진 → 상품명</text>
+
+    <circle cx="300" cy="818" r="11" fill="#7fd8ea"/><text x="300" y="822" class="bn" text-anchor="middle">2</text>
+    <text x="318" y="815" class="it" style="font-size:13px">식재료 정리</text><text x="318" y="834" class="id">상품명 → 재료명·보관·소비기한</text>
+
+    <circle cx="540" cy="818" r="11" fill="#7fd8ea"/><text x="540" y="822" class="bn" text-anchor="middle">3</text>
+    <text x="558" y="815" class="it" style="font-size:13px">레시피 추천</text><text x="558" y="834" class="id">임박 재료 우선 · JSON 레시피</text>
+
+    <circle cx="780" cy="818" r="11" fill="#7fd8ea"/><text x="780" y="822" class="bn" text-anchor="middle">4</text>
+    <text x="798" y="815" class="it" style="font-size:13px">분리배출 안내</text><text x="798" y="834" class="id">부위·포장재별 · 결과는 DB 캐시</text>
+
+    <circle cx="1020" cy="818" r="11" fill="#7fd8ea"/><text x="1020" y="822" class="bn" text-anchor="middle">5</text>
+    <text x="1038" y="815" class="it" style="font-size:13px">커뮤니티 글 정리</text><text x="1038" y="834" class="id">자동 태그 · 부적절 글 필터 · 다듬기</text>
+  </g>
+</svg>
