@@ -1,0 +1,12 @@
+# 가상환경
+.venv/
+venv/
+clovax/
+clova-env/
+limit/
+__pycache__/
+*.pyc
+.DS_Store
+# 비밀키 / 로컬 DB
+.env
+app/littone.db
